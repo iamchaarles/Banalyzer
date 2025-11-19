@@ -61,11 +61,9 @@ Banalyzer/
 ├── src/
 │   ├── train.py              # Model training script
 │   └── predict.py            # Image prediction script
-├── helpers/                  # Utility functions (if any)
 ├── streamlitapp.py          # Streamlit web application
 ├── requirements.txt         # Python dependencies
 ├── DATASET_INFO.md          # Dataset documentation
-├── Banana ripeness detection.pdf  # Project documentation
 ├── .gitignore              # Git ignore rules
 └── README.md               # This file
 ```

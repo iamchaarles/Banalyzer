@@ -1,0 +1,136 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Data folders (too large for GitHub)
+data/
+datasets/
+images/
+
+# Model files (large binary files)
+models/*.keras
+models/*.h5
+models/*.pb
+models/*.pt
+models/*.pth
+*.keras
+*.h5
+*.pb
+*.weights
+
+# Trained model checkpoints
+checkpoints/
+*.ckpt
+
+# Training outputs
+logs/
+training_history.png
+*.log
+
+# TensorFlow / PyTorch
+*.tfrecord
+*.tfevents.*
+events.out.tfevents.*
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# Generated documentation
+docs/_build/
+site/
+
+# User-specific files
+*.csv
+*.xlsx
+*.zip
+*.tar.gz
+*.rar
+
+# Streamlit
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/

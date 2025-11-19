@@ -122,7 +122,6 @@ site/
 
 # Streamlit
 .streamlit/secrets.toml
-.streamlit/config.toml
 
 # MyPy
 .mypy_cache/

@@ -1,45 +1,80 @@
-# 🍌Banalyzer
-'A Banana Ripeness Classifier'
+# 🍌 Banalyzer
+**A Banana Ripeness Classifier**
 
 A deep learning project that classifies bananas into four ripeness categories: **Unripe**, **Ripe**, **Overripe**, and **Rotten** using transfer learning with MobileNetV2.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
 
-## 📋 Project Overview
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Dataset Setup](#-dataset-setup)
+- [Usage](#-usage)
+  - [Training the Model](#-training-the-model)
+  - [Making Predictions](#-making-predictions)
+  - [Running the Web App](#-running-the-web-app)
+- [Model Performance](#-model-performance)
+- [Deployment](#-deployment)
+- [Future Improvements](#-future-improvements)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact](#-contact)
+
+---
+
+## 🎯 Overview
 
 This project uses computer vision and deep learning to automatically identify the ripeness stage of bananas from images. It's useful for:
-- Food quality control
-- Grocery store inventory management
-- Reducing food waste
-- Learning about image classification and transfer learning
 
-## 🎯 Features
+- 🏪 Food quality control in grocery stores
+- 📦 Inventory management and sorting
+- ♻️ Reducing food waste by optimal usage timing
+- 🎓 Learning about image classification and transfer learning
+- 🔬 Research in agricultural automation
 
-- **Transfer Learning**: Uses pre-trained MobileNetV2 for efficient training
-- **4-Class Classification**: Unripe, Ripe, Overripe, Rotten
-- **Data Augmentation**: Improves model generalization
-- **Easy to Use**: Simple command-line interface
-- **Web Interface**: Upload and classify bananas in your browser
+---
 
-## 🏗️ Project Structure
+## ✨ Features
+
+- **🤖 Transfer Learning**: Leverages pre-trained MobileNetV2 for efficient training
+- **🎯 4-Class Classification**: Accurately categorizes as Unripe, Ripe, Overripe, or Rotten
+- **📊 Data Augmentation**: Improves model generalization and robustness
+- **💻 Command-Line Interface**: Simple prediction script for batch processing
+- **🌐 Interactive Web App**: User-friendly Streamlit interface for instant classification
+- **📈 Training Visualization**: Detailed plots of training metrics
+- **🚀 Production Ready**: Easy to deploy on cloud platforms
+
+---
+
+## 🗂️ Project Structure
 
 ```
-banana-ripeness-classifier/
-├── data/
-│   ├── train/           # Training images
-│   └── test/            # Test images
-├── models/              # Saved models
+Banalyzer/
 ├── src/
-│   ├── train.py         # Training script
-│   └── predict.py       # Prediction script
-├── web/                 # Web interface
-├── requirements.txt     # Python dependencies
-└── README.md
+│   ├── train.py              # Model training script
+│   └── predict.py            # Image prediction script
+├── helpers/                  # Utility functions (if any)
+├── streamlitapp.py          # Streamlit web application
+├── requirements.txt         # Python dependencies
+├── DATASET_INFO.md          # Dataset documentation
+├── Banana ripeness detection.pdf  # Project documentation
+├── .gitignore              # Git ignore rules
+└── README.md               # This file
 ```
 
-## 🚀 Getting Started
+**Note**: The `data/` and `models/` folders are not included in this repository due to size constraints.
+
+---
+
+## 🚀 Installation
 
 ### Prerequisites
 
@@ -47,15 +82,17 @@ banana-ripeness-classifier/
 - pip (Python package manager)
 - Virtual environment (recommended)
 
-### Installation
+### Setup Steps
 
 1. **Clone the repository**
+
 ```bash
-git clone https://github.com/yourusername/banana-ripeness-classifier.git
-cd banana-ripeness-classifier
+git clone https://github.com/iamchaarles/Banalyzer.git
+cd Banalyzer
 ```
 
 2. **Create and activate virtual environment**
+
 ```bash
 # Windows
 python -m venv venv
@@ -67,13 +104,20 @@ source venv/bin/activate
 ```
 
 3. **Install dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### Dataset Setup
+---
 
-Organize your banana images in the following structure:
+## 📊 Dataset Setup
+
+The training dataset is not included in this repository due to size constraints. To use this project:
+
+1. Prepare your banana images organized by ripeness category
+2. Follow the structure detailed in [DATASET_INFO.md](DATASET_INFO.md)
+3. Organize images in the following directory structure:
 
 ```
 data/
@@ -89,33 +133,44 @@ data/
     └── rotten_test/
 ```
 
+**Dataset Sources:**
+- Collect your own banana images at different ripeness stages
+- Use public datasets from Kaggle or similar platforms
+- Ensure balanced representation across all four categories
 
-## 🎓 Training the Model
+---
 
-Run the training script:
+## 💡 Usage
+
+### 🎓 Training the Model
+
+Train your own model with your dataset:
 
 ```bash
 python src/train.py
 ```
 
-This will:
+**This will:**
 - Load and augment your dataset
-- Build a MobileNetV2-based model
-- Train for 20 epochs (with early stopping)
+- Build a MobileNetV2-based transfer learning model
+- Train for up to 20 epochs (with early stopping)
 - Save the best model to `models/best_model.keras`
 - Generate training history plots
 
-**Training typically takes**: 5-15 minutes on a modern CPU, 2-5 minutes with GPU.
+**Training time:** 5-15 minutes on modern CPU, 2-5 minutes with GPU
 
-## 🔮 Making Predictions
+---
 
-Test the model on a single image:
+### 🔮 Making Predictions
+
+Test the model on individual images using the command line:
 
 ```bash
 python src/predict.py path/to/your/banana.jpg
 ```
 
-Example output:
+**Example Output:**
+
 ```
 ============================================================
 PREDICTION RESULTS
@@ -135,53 +190,129 @@ rotten      :  0.32%
 ✓ High confidence prediction
 ```
 
-## 📊 Model Performance
+---
 
-| Metric | Value |
-|--------|-------|
-| Architecture | MobileNetV2 + Custom Head |
-| Input Size | 224x224x3 |
-| Parameters | ~2.5M trainable |
-| Training Time | ~10 min (CPU) |
-| testing Accuracy | ~85-95% (depends on dataset) |
+### 🌐 Running the Web App
 
-## 🌐 Web Interface
+Launch the interactive Streamlit web application:
 
-The project includes a simple web interface for easy testing:
+```bash
+streamlit run streamlitapp.py
+```
 
-1. Open `web/index.html` in your browser
-2. Upload a banana image or use your camera
-3. Get instant classification results
+**Features:**
+- 📤 Drag-and-drop image upload
+- 📸 Use your device camera
+- ⚡ Real-time classification
+- 📊 Confidence score visualization
+- 🎨 Beautiful, responsive UI
 
-## 📈 Future Improvements
-
-- [ ] Add more training data
-- [ ] Implement backend API (Flask/FastAPI)
-- [ ] Deploy to cloud (Heroku, AWS, Google Cloud)
-- [ ] Add multi-banana detection
-- [ ] Create mobile app version
-- [ ] Add nutritional information based on ripeness
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- TensorFlow and Keras teams for the amazing framework
-- MobileNetV2 architecture from Google
-- The open-source community
-
-## 📧 Contact
-
-Your Name - 
-
-Project Link: 
+The app will open in your browser at `http://localhost:8501`
 
 ---
 
-⭐ If you found this project helpful, please consider giving it a star!
+## 📈 Model Performance
+
+| Metric | Value |
+|--------|-------|
+| **Architecture** | MobileNetV2 + Custom Head |
+| **Input Size** | 640x640x3 RGB |
+| **Total Parameters** | ~2.5M (trainable) |
+| **Training Time** | ~10 min (CPU) / ~3 min (GPU) |
+| **Validation Accuracy** | ~85-95% (dataset-dependent) |
+| **Model Size** | ~15 MB |
+| **Inference Time** | <100ms per image |
+
+**Model Architecture:**
+- Base: MobileNetV2 (pre-trained on ImageNet)
+- Global Average Pooling
+- Dropout (0.3)
+- Dense Layer (128 units, ReLU)
+- Dropout (0.2)
+- Output Layer (4 units, Softmax)
+
+---
+
+## 🚀 Deployment
+
+### Deploy on Streamlit Cloud
+
+1. Fork this repository
+2. Create a [Streamlit Cloud](https://share.streamlit.io) account
+3. Click "New app" and connect your GitHub repository
+4. Select `streamlitapp.py` as the main file
+5. **Important:** Upload your trained model (`best_model.keras`) to the `models/` folder before deployment
+
+### Deploy on Hugging Face Spaces
+
+1. Create a [Hugging Face](https://huggingface.co) account
+2. Create a new Space with Streamlit template
+3. Upload all project files including the trained model
+4. The app will automatically deploy
+
+### Local Deployment with Docker (Optional)
+
+```bash
+# Coming soon - Docker support
+```
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] Increase training dataset size and diversity
+- [ ] Add multi-banana detection and counting
+- [ ] Implement REST API (Flask/FastAPI)
+- [ ] Create mobile application (iOS/Android)
+- [ ] Add nutritional information based on ripeness
+- [ ] Real-time video classification
+- [ ] Export to TensorFlow Lite for mobile deployment
+- [ ] Add explainability features (Grad-CAM visualizations)
+- [ ] Support for other fruits
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Please ensure your code follows the project's coding standards and includes appropriate tests.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- TensorFlow and Keras teams for the amazing deep learning framework
+- Google for the MobileNetV2 architecture
+- Streamlit for the intuitive web app framework
+- The open-source community for inspiration and support
+
+---
+
+## 📧 Contact
+
+**Charles** - [@iamchaarles](https://github.com/iamchaarles)
+
+**Project Link**: [https://github.com/iamchaarles/Banalyzer](https://github.com/iamchaarles/Banalyzer)
+
+---
+
+<div align="center">
+
+⭐ **If you found this project helpful, please consider giving it a star!** ⭐
+
+Made with ❤️ and 🍌
+
+</div>

@@ -194,7 +194,7 @@ classifier = load_classifier()
 
 # Check if models are loaded
 if classifier is None:
-    st.error("⚠️ Ripeness classifier not found! Please ensure models/best_model.keras exists.")
+    st.error(f"⚠️ Ripeness classifier not found! Please ensure {CLASSIFIER_PATH} exists.")
     st.stop()
 
 # Show detector status

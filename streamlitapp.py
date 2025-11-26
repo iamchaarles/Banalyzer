@@ -281,7 +281,6 @@ if uploaded_file is not None:
                 </div>
             """, unsafe_allow_html=True)
             
-            st.error("❌ **Detection Failed:** The AI determined this is not a banana")
             
             st.info("""
                 **Tips for better detection:**
@@ -291,8 +290,6 @@ if uploaded_file is not None:
                 - 🎯 Avoid cluttered backgrounds
                 - 🔄 Try a different angle
             """)
-            
-            st.warning("Only banana images will be analyzed for ripeness.")
         
         else:
             

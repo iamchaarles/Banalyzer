@@ -118,9 +118,9 @@ def download_model(url, path):
         return path
     
     try:
-        with st.spinner(f"📥 Downloading {os.path.basename(path)}... (first time only)"):
+        with st.spinner():
             urllib.request.urlretrieve(url, path)
-        st.success(f"✅ Downloaded {os.path.basename(path)}")
+        st.success()
         return path
     except Exception as e:
         st.error(f"❌ Error downloading model: {e}")
@@ -229,7 +229,7 @@ if classifier is None:
 
 # Show detector status
 if detector is not None:
-    st.success("✅ Two-stage detection active: Binary Detector + Ripeness Classifier")
+    st.success()
 else:
     st.warning("⚠️ Binary detector not found. Running in classifier-only mode.")
     st.info("The detector will auto-download from GitHub releases on first run.")
@@ -295,7 +295,7 @@ if uploaded_file is not None:
                 </div>
             """, unsafe_allow_html=True)
             
-            st.error("❌ **Detection Failed:** The AI determined this is not a banana")
+            st.error("**Detection Failed:** The AI determined this is not a banana")
             
             st.info("""
                 **Tips for better detection:**
@@ -311,17 +311,17 @@ if uploaded_file is not None:
         else:
             # BANANA DETECTED - Proceed with ripeness classification
             if detector is not None:
-                st.success(f"✅ Step 1/2: Banana detected! (Confidence: {detection_conf*100:.1f}%)")
+                st.success()
             
             # STEP 2: Ripeness Classification
-            with st.spinner("🔬 Step 2/2: Analyzing ripeness..."):
+            with st.spinner("Analyzing ripeness..."):
                 predicted_class, confidence, all_probs = classify_ripeness(image, classifier)
             
             confidence_level, confidence_class, confidence_icon = get_confidence_level(confidence)
             
             # Display results
             st.markdown("---")
-            st.markdown("## 📊 Ripeness Analysis Results")
+            st.markdown("Ripeness Analysis Results")
             
             # Main prediction card
             class_info = CLASS_INFO[predicted_class]
@@ -405,7 +405,6 @@ else:
 st.markdown("---")
 st.markdown("""
     <div style='text-align: center; color: #888; padding: 2rem 0;'>
-        <p>Made with ❤️ using TensorFlow & Streamlit</p>
-        <p style='font-size: 0.9rem;'>Binary Detector + MobileNetV2 Transfer Learning</p>
+        <p>Made with ❤️ using TensorFlow</p>
     </div>
 """, unsafe_allow_html=True)
